@@ -14,9 +14,16 @@ namespace ProvaTecnicaEAuditoria.Repositorios
             _auditoriaDataContext = eAuditoriaDataContext;
         }
 
-        public IList<Locacao> ObterIntervalo(int pular, int pegar)
+        public IList<Locacao> ObterIntervalo(string busca, int pular, int pegar)
         {
-            return _auditoriaDataContext.Locacoes.AsNoTracking().Skip(pular).Take(pegar).ToList();
+            busca = busca.ToLower();
+
+            return _auditoriaDataContext.Locacoes
+                .AsNoTracking()
+                .Include(x=> x.Filme)
+                .Include(x=> x.Cliente)
+                .Where(x => x.Cliente.Cpf.Contains(busca) || x.Filme.Titulo.ToLower().Contains(busca))
+                .Skip(pular).Take(pegar).ToList();
         }
 
         public Locacao ObterPorId(int id)

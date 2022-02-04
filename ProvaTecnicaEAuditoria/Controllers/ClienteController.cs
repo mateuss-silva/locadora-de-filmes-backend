@@ -19,13 +19,12 @@ namespace ProvaTecnicaEAuditoria.Controllers
         }
 
 
-        // GET: api/<ClienteController>
         [HttpGet]
-        public IActionResult Get(int pular = 0, int pegar = 25)
+        public IActionResult Get(string busca = "", int pular = 0, int pegar = 25)
         {
             try
             {
-                var clientes = _repositorio.ObterIntervalo(pular, pegar);
+                var clientes = _repositorio.ObterIntervalo(busca, pular, pegar);
 
                 var clientesViewModel = clientes.Select(e => new ObterClienteViewModel(e)).ToList();
 

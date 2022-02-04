@@ -21,11 +21,11 @@ namespace ProvaTecnicaEAuditoria.Controllers
 
         // GET: api/<LocacaoController>
         [HttpGet]
-        public IActionResult Get(int pular = 0, int pegar = 25)
+        public IActionResult Get(string busca = "", int pular = 0, int pegar = 25)
         {
             try
             {
-                var locacoes = _repositorio.ObterIntervalo(pular, pegar);
+                var locacoes = _repositorio.ObterIntervalo(busca, pular, pegar);
 
                 var locacoesViewModel = locacoes.Select(e => new ObterLocacaoViewModel(e)).ToList();
 

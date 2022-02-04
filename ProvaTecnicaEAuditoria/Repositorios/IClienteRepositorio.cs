@@ -5,7 +5,7 @@ namespace ProvaTecnicaEAuditoria.Repositorios
 {
     public interface IClienteRepositorio: IDisposable
     {
-        IList<Cliente> ObterIntervalo(int pular, int pegar);
+        IList<Cliente> ObterIntervalo(string busca, int pular, int pegar);
         Cliente ObterPorId(int id);
         bool CpfExistente(string cpf);
         void Inserir(Cliente cliente);
