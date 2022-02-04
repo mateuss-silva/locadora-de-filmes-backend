@@ -1,4 +1,4 @@
-﻿using ProvaTecnicaEAuditoria.Models;
+﻿using ProvaTecnicaEAuditoria.Modelos;
 
 namespace ProvaTecnicaEAuditoria.ViewModels
 {

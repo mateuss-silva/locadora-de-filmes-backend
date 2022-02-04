@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProvaTecnicaEAuditoria.Models;
-using ProvaTecnicaEAuditoria.Repositories;
+using ProvaTecnicaEAuditoria.Modelos;
+using ProvaTecnicaEAuditoria.Repositorios;
 using ProvaTecnicaEAuditoria.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

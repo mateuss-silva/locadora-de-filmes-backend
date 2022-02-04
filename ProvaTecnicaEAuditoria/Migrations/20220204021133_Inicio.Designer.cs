@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProvaTecnicaEAuditoria.Data;
+using ProvaTecnicaEAuditoria.Dados;
 
 #nullable disable
 
 namespace ProvaTecnicaEAuditoria.Migrations
 {
-    [DbContext(typeof(EAuditoriaDataContext))]
+    [DbContext(typeof(EAuditoriaDbContext))]
     [Migration("20220204021133_Inicio")]
     partial class Inicio
     {

@@ -1,7 +1,7 @@
 ﻿
 using ProvaTecnicaEAuditoria.ViewModels;
 
-namespace ProvaTecnicaEAuditoria.Models
+namespace ProvaTecnicaEAuditoria.Modelos
 {
     public class Locacao
     {

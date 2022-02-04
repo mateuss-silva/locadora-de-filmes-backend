@@ -1,4 +1,4 @@
-﻿using ProvaTecnicaEAuditoria.Models;
+﻿using ProvaTecnicaEAuditoria.Modelos;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProvaTecnicaEAuditoria.ViewModels

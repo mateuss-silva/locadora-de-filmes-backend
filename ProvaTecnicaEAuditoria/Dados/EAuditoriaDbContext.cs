@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProvaTecnicaEAuditoria.Data.Mapeamentos;
-using ProvaTecnicaEAuditoria.Models;
+using ProvaTecnicaEAuditoria.Dados.Mapeamentos;
+using ProvaTecnicaEAuditoria.Modelos;
 
-namespace ProvaTecnicaEAuditoria.Data
+namespace ProvaTecnicaEAuditoria.Dados
 {
-    public class EAuditoriaDataContext : DbContext
+    public class EAuditoriaDbContext : DbContext
     {
-        public EAuditoriaDataContext(DbContextOptions<EAuditoriaDataContext> options) : base(options) { }
+        public EAuditoriaDbContext(DbContextOptions<EAuditoriaDbContext> options) : base(options) { }
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Locacao> Locacoes { get; set; }

@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProvaTecnicaEAuditoria.Data;
-using ProvaTecnicaEAuditoria.Models;
+using ProvaTecnicaEAuditoria.Dados;
+using ProvaTecnicaEAuditoria.Modelos;
 
-namespace ProvaTecnicaEAuditoria.Repositories
+namespace ProvaTecnicaEAuditoria.Repositorios
 {
     public class ClienteRepositorio : IClienteRepositorio
     {
-        private EAuditoriaDataContext _auditoriaDataContext;
+        private EAuditoriaDbContext _auditoriaDataContext;
 
-        public ClienteRepositorio(EAuditoriaDataContext eAuditoriaDataContext)
+        public ClienteRepositorio(EAuditoriaDbContext eAuditoriaDataContext)
         {
             _auditoriaDataContext = eAuditoriaDataContext;
         }

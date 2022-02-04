@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProvaTecnicaEAuditoria.Models;
+using ProvaTecnicaEAuditoria.Modelos;
 
-namespace ProvaTecnicaEAuditoria.Data.Mapeamentos
+namespace ProvaTecnicaEAuditoria.Dados.Mapeamentos
 {
     public class MapeamentoDoFilme : IEntityTypeConfiguration<Filme>
     {

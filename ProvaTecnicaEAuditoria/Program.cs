@@ -1,8 +1,8 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProvaTecnicaEAuditoria.Data;
-using ProvaTecnicaEAuditoria.Repositories;
+using ProvaTecnicaEAuditoria.Dados;
+using ProvaTecnicaEAuditoria.Repositorios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,7 +39,7 @@ void ConfigureServices(WebApplicationBuilder builder)
 
     builder.Services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
     builder.Services.AddTransient<ILocacaoRepositorio, LocacaoRepositorio>();
-    builder.Services.AddDbContext<EAuditoriaDataContext>(x => x.UseMySql(ServerVersion.AutoDetect(connectionString)));
+    builder.Services.AddDbContext<EAuditoriaDbContext>(x => x.UseMySql(ServerVersion.AutoDetect(connectionString)));
 }
 
 void ConfigureMvc(WebApplicationBuilder builder)

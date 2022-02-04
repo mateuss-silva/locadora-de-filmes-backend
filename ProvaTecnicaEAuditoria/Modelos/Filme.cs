@@ -1,5 +1,5 @@
 ﻿
-namespace ProvaTecnicaEAuditoria.Models
+namespace ProvaTecnicaEAuditoria.Modelos
 {
     public class Filme
     {

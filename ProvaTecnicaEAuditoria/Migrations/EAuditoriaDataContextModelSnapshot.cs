@@ -3,13 +3,13 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProvaTecnicaEAuditoria.Data;
+using ProvaTecnicaEAuditoria.Dados;
 
 #nullable disable
 
 namespace ProvaTecnicaEAuditoria.Migrations
 {
-    [DbContext(typeof(EAuditoriaDataContext))]
+    [DbContext(typeof(EAuditoriaDbContext))]
     partial class EAuditoriaDataContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
