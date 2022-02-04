@@ -4,9 +4,9 @@ using ProvaTecnicaEAuditoria.Modelos;
 
 namespace ProvaTecnicaEAuditoria.Dados
 {
-    public class EAuditoriaDbContext : DbContext
+    public class EAuditoriaContexto : DbContext
     {
-        public EAuditoriaDbContext(DbContextOptions<EAuditoriaDbContext> options) : base(options) { }
+        public EAuditoriaContexto(DbContextOptions<EAuditoriaContexto> options) : base(options) { }
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Locacao> Locacoes { get; set; }

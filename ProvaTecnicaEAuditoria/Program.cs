@@ -39,7 +39,7 @@ void ConfigureServices(WebApplicationBuilder builder)
 
     builder.Services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
     builder.Services.AddTransient<ILocacaoRepositorio, LocacaoRepositorio>();
-    builder.Services.AddDbContext<EAuditoriaDbContext>(x => x.UseMySql(ServerVersion.AutoDetect(connectionString)));
+    builder.Services.AddDbContext<EAuditoriaContexto>(x => x.UseMySql(ServerVersion.AutoDetect(connectionString)));
 }
 
 void ConfigureMvc(WebApplicationBuilder builder)

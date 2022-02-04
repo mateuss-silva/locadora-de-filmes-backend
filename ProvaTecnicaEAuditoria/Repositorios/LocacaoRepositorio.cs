@@ -7,9 +7,9 @@ namespace ProvaTecnicaEAuditoria.Repositorios
     public class LocacaoRepositorio : ILocacaoRepositorio
     {
 
-        private EAuditoriaDbContext _auditoriaDataContext;
+        private EAuditoriaContexto _auditoriaDataContext;
 
-        public LocacaoRepositorio(EAuditoriaDbContext eAuditoriaDataContext)
+        public LocacaoRepositorio(EAuditoriaContexto eAuditoriaDataContext)
         {
             _auditoriaDataContext = eAuditoriaDataContext;
         }

@@ -10,7 +10,7 @@ using ProvaTecnicaEAuditoria.Dados;
 
 namespace ProvaTecnicaEAuditoria.Migrations
 {
-    [DbContext(typeof(EAuditoriaDbContext))]
+    [DbContext(typeof(EAuditoriaContexto))]
     [Migration("20220204021133_Inicio")]
     partial class Inicio
     {

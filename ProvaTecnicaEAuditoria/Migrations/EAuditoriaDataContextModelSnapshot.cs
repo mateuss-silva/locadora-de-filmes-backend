@@ -9,7 +9,7 @@ using ProvaTecnicaEAuditoria.Dados;
 
 namespace ProvaTecnicaEAuditoria.Migrations
 {
-    [DbContext(typeof(EAuditoriaDbContext))]
+    [DbContext(typeof(EAuditoriaContexto))]
     partial class EAuditoriaDataContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

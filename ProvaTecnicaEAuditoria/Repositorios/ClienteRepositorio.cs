@@ -6,9 +6,9 @@ namespace ProvaTecnicaEAuditoria.Repositorios
 {
     public class ClienteRepositorio : IClienteRepositorio
     {
-        private EAuditoriaDbContext _auditoriaDataContext;
+        private EAuditoriaContexto _auditoriaDataContext;
 
-        public ClienteRepositorio(EAuditoriaDbContext eAuditoriaDataContext)
+        public ClienteRepositorio(EAuditoriaContexto eAuditoriaDataContext)
         {
             _auditoriaDataContext = eAuditoriaDataContext;
         }
