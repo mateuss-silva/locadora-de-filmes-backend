@@ -72,7 +72,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
                 }
                 else
                 {
-                    var clienteViewModel = new EditarClienteViewModel(cliente);
+                    var clienteViewModel = new AtualizarClienteViewModel(cliente);
 
                     return StatusCode(
                      StatusCodes.Status200OK,
@@ -99,7 +99,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
 
         // POST api/<ClienteController>
         [HttpPost]
-        public IActionResult Post([FromBody] EditarClienteViewModel cliente)
+        public IActionResult Post([FromBody] AtualizarClienteViewModel cliente)
         {
             try
             {
@@ -131,12 +131,10 @@ namespace ProvaTecnicaEAuditoria.Controllers
                 {
                     _repositorio.Inserir(clienteModel);
 
-                    var clienteViewModel = new ObterClienteViewModel(clienteModel);
-
                     return StatusCode(StatusCodes.Status201Created,
                                new
                                {
-                                   cliente = clienteViewModel,
+                                   id = clienteModel.Id,
                                    mensagem = "Cliente criado com sucesso.",
                                    status = StatusCodes.Status201Created
                                });
@@ -155,7 +153,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
 
         // PUT api/<ClienteController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] EditarClienteViewModel cliente)
+        public IActionResult Put(int id, [FromBody] AtualizarClienteViewModel cliente)
         {
             try
             {

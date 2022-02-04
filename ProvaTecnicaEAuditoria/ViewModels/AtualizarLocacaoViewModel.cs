@@ -3,14 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProvaTecnicaEAuditoria.ViewModels
 {
-    public class EditarLocacaoViewModel
+    public class AtualizarLocacaoViewModel
     {
-        public EditarLocacaoViewModel() { }
-        public EditarLocacaoViewModel(Locacao locacao)
+        public AtualizarLocacaoViewModel() { }
+        public AtualizarLocacaoViewModel(Locacao locacao)
         {
             ClienteId = locacao.ClienteId;
             FilmeId = locacao.FilmeId;
-            DataDeLocacao = locacao.DataDeLocacao;
             DataDeDevolucao = locacao.DataDeDevolucao;
         }
 
@@ -20,10 +19,6 @@ namespace ProvaTecnicaEAuditoria.ViewModels
         [Required(ErrorMessage = "O Id do Filme é obrigatório")]
         public int FilmeId { get; set; }
 
-        [Required(ErrorMessage = "A Data de locação é obrigatória")]
-        public DateTime DataDeLocacao { get; set; }
-
-        [Required(ErrorMessage = "A Data de Devolução é obrigatória")]
-        public DateTime DataDeDevolucao { get; set; }
+        public DateTime? DataDeDevolucao { get; set; }
     }
 }

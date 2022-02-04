@@ -71,7 +71,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
                 }
                 else
                 {
-                    var locacaoViewModel = new EditarLocacaoViewModel(locacao);
+                    var locacaoViewModel = new ObterLocacaoViewModel(locacao);
 
                     return StatusCode(
                      StatusCodes.Status200OK,
@@ -98,7 +98,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
 
         // POST api/<LocacaoController>
         [HttpPost]
-        public IActionResult Post([FromBody] EditarLocacaoViewModel locacao)
+        public IActionResult Post([FromBody] InserirLocacaoViewModel locacao)
         {
             try
             {
@@ -131,12 +131,10 @@ namespace ProvaTecnicaEAuditoria.Controllers
 
                     _repositorio.Inserir(locacaoModel);
 
-                    var locacaoViewModel = new ObterLocacaoViewModel(locacaoModel);
-
                     return StatusCode(StatusCodes.Status201Created,
                                new
                                {
-                                   locacao = locacaoViewModel,
+                                   id = locacaoModel.Id,
                                    mensagem = "Locação criado com sucesso.",
                                    status = StatusCodes.Status201Created
                                });
@@ -155,7 +153,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
 
         // PUT api/<LocacaoController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] EditarLocacaoViewModel locacao)
+        public IActionResult Put(int id, [FromBody] AtualizarLocacaoViewModel locacao)
         {
             try
             {

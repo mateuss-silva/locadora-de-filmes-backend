@@ -23,6 +23,6 @@ namespace ProvaTecnicaEAuditoria.ViewModels
         public string NomeDoCliente { get; set; }
         public string Cpf { get; set; }
         public DateTime DataDeLocacao { get; set; }
-        public DateTime DataDeDevolucao { get; set; }
+        public DateTime? DataDeDevolucao { get; set; }
     }
 }

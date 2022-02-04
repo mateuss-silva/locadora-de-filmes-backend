@@ -7,7 +7,7 @@ namespace ProvaTecnicaEAuditoria.Modelos
     {
         public Cliente() { }
 
-        public Cliente(EditarClienteViewModel clienteViewModel)
+        public Cliente(AtualizarClienteViewModel clienteViewModel)
         {
             Nome = clienteViewModel.Nome;
             Cpf = clienteViewModel.Cpf;
@@ -20,7 +20,7 @@ namespace ProvaTecnicaEAuditoria.Modelos
         public DateTime DataDeNascimento { get; set; }
         public virtual List<Locacao> Locacoes { get; set; }
 
-        public void Atualizar(EditarClienteViewModel clienteViewModel)
+        public void Atualizar(AtualizarClienteViewModel clienteViewModel)
         {
             Nome = clienteViewModel.Nome;
             Cpf = clienteViewModel.Cpf;

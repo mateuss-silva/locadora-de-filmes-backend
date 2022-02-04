@@ -15,9 +15,11 @@ namespace ProvaTecnicaEAuditoria.Repositorios
 
         public IList<Cliente> ObterIntervalo(string busca, int pular, int pegar)
         {
+            busca = busca.ToLower();
+
             return _auditoriaDataContext.Clientes
                 .AsNoTracking()
-                .Where(x=> x.Cpf.Contains(busca) || x.Nome.ToLower().Contains(busca.ToLower()))
+                .Where(x=> x.Cpf.Contains(busca) || x.Nome.ToLower().Contains(busca))
                 .Skip(pular)
                 .Take(pegar)
                 .ToList();

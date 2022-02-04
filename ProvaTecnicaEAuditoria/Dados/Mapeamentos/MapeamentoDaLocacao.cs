@@ -26,7 +26,6 @@ namespace ProvaTecnicaEAuditoria.Dados.Mapeamentos
                 .HasColumnName("DataLocacao");
 
             builder.Property(x => x.DataDeDevolucao)
-                .IsRequired()
                 .HasColumnType("DATETIME")
                 .HasColumnName("DataDevolucao");
 
