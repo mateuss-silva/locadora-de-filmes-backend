@@ -3,6 +3,8 @@ namespace ProvaTecnicaEAuditoria.Models
 {
     public class Locacao
     {
+        public Locacao() { }
+
         public int Id { get; set; }
         public int ClienteId { get; set; }
         public int FilmeId { get; set; }

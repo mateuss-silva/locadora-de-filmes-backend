@@ -34,8 +34,8 @@ namespace ProvaTecnicaEAuditoria.Data.Mapeamentos
 
             builder.Property(x => x.DataDeNascimento)
                  .IsRequired()
-                 .HasColumnName("DataNascimento")
-                .HasColumnType("DATETIME");
+                 .HasColumnType("DATETIME")
+                 .HasColumnName("DataNascimento")                ;
 
             // Índices
             builder
@@ -43,8 +43,7 @@ namespace ProvaTecnicaEAuditoria.Data.Mapeamentos
                 .IsUnique();
 
             builder
-                 .HasIndex(x => x.Nome, "idx_NOME")
-                 .IsUnique();
+                 .HasIndex(x => x.Nome, "idx_NOME");
         }
     }
 }

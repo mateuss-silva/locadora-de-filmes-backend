@@ -28,22 +28,20 @@ namespace ProvaTecnicaEAuditoria.Data.Mapeamentos
 
             builder.Property(x => x.ClassificacaoIndicativa)
                 .IsRequired()
-                .HasColumnName("ClassificacaoIndicativa")
-                .HasColumnType("INT");
+                .HasColumnType("INT")
+                .HasColumnName("ClassificacaoIndicativa");
 
             builder.Property(x => x.Lancamento)
                 .IsRequired()
-                .HasColumnName("Lancamento")
-                .HasColumnType("TINYINT");
+                .HasColumnType("TINYINT")
+                .HasColumnName("Lancamento");
 
             // Índices
             builder
-                .HasIndex(x => x.Lancamento, "idx_Lancamento")
-                .IsUnique();
+                .HasIndex(x => x.Lancamento, "idx_Lancamento");
 
             builder
-                 .HasIndex(x => x.Titulo, "idx_Titulo")
-                 .IsUnique();
+                 .HasIndex(x => x.Titulo, "idx_Titulo");
         }
     }
 }

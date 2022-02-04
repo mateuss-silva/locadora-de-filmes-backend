@@ -22,13 +22,13 @@ namespace ProvaTecnicaEAuditoria.Data.Mapeamentos
             // Propriedades
             builder.Property(x => x.DataDeLocacao)
                 .IsRequired()
-                .HasColumnName("DataLocacao")
-                .HasColumnType("DATETIME");
+                .HasColumnType("DATETIME")
+                .HasColumnName("DataLocacao");
 
             builder.Property(x => x.DataDeDevolucao)
                 .IsRequired()
-                .HasColumnName("DataDevolucao")
-                .HasColumnType("DATETIME");
+                .HasColumnType("DATETIME")
+                .HasColumnName("DataDevolucao");
 
 
             // Relacionamentos
@@ -36,13 +36,15 @@ namespace ProvaTecnicaEAuditoria.Data.Mapeamentos
                 .HasOne(x => x.Filme)
                 .WithMany(x => x.Locacoes)
                 .HasForeignKey(x => x.FilmeId)
-                .HasConstraintName("FK_Filme_idx");
+                .HasConstraintName("FK_Filme_idx")
+                .OnDelete(DeleteBehavior.ClientNoAction);
 
             builder
                 .HasOne(x => x.Cliente)
                 .WithMany(x => x.Locacoes)
                 .HasForeignKey(x => x.ClienteId)
-                .HasConstraintName("FK_Cliente_idx");
+                .HasConstraintName("FK_Cliente_idx")
+                .OnDelete(DeleteBehavior.ClientNoAction);
 
         }
     }
