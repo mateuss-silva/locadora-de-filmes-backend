@@ -38,6 +38,7 @@ void ConfigureServices(WebApplicationBuilder builder)
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
     builder.Services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
+    builder.Services.AddTransient<ILocacaoRepositorio, LocacaoRepositorio>();
     builder.Services.AddDbContext<EAuditoriaDataContext>(x => x.UseMySql(ServerVersion.AutoDetect(connectionString)));
 }
 

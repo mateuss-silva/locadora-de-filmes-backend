@@ -7,7 +7,6 @@ namespace ProvaTecnicaEAuditoria.Repositories
         IList<Cliente> ObterIntervalo(int pular, int pegar);
         Cliente ObterPorId(int id);
         bool CpfExistente(string cpf);
-        bool ClienteExistente(int id);
         void Inserir(Cliente cliente);
         void Atualizar(Cliente cliente);
         void Deletar(Cliente cliente);

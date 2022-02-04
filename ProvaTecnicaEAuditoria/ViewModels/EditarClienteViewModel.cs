@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProvaTecnicaEAuditoria.ViewModels
 {
-    public class ClienteViewModel
+    public class EditarClienteViewModel
     {
-        public ClienteViewModel() { }
+        public EditarClienteViewModel() { }
 
-        public ClienteViewModel(Cliente cliente)
+        public EditarClienteViewModel(Cliente cliente)
         {
             Nome = cliente.Nome;
             Cpf = cliente.Cpf;

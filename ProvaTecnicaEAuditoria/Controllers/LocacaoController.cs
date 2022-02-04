@@ -9,32 +9,32 @@ namespace ProvaTecnicaEAuditoria.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteController : ControllerBase
+    public class LocacaoController : ControllerBase
     {
-        private IClienteRepositorio _repositorio;
+        private ILocacaoRepositorio _repositorio;
 
-        public ClienteController(IClienteRepositorio repositorio)
+        public LocacaoController(ILocacaoRepositorio repositorio)
         {
             _repositorio = repositorio;
         }
 
 
-        // GET: api/<ClienteController>
+        // GET: api/<LocacaoController>
         [HttpGet]
         public IActionResult Get(int pular = 0, int pegar = 25)
         {
             try
             {
-                var clientes = _repositorio.ObterIntervalo(pular, pegar);
+                var locacoes = _repositorio.ObterIntervalo(pular, pegar);
 
-                var clientesViewModel = clientes.Select(e => new ObterClienteViewModel(e)).ToList();
+                var locacoesViewModel = locacoes.Select(e => new ObterLocacaoViewModel(e)).ToList();
 
                 return StatusCode(
                StatusCodes.Status200OK,
                new
                {
-                   clientes = clientesViewModel,
-                   mensagem = "Clientes obtidos com sucesso.",
+                   locacoes = locacoesViewModel,
+                   mensagem = "Locações obtidas com sucesso.",
                    status = StatusCodes.Status200OK
                });
 
@@ -51,36 +51,34 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        /// GET api/<ClienteController>/5
+        // GET api/<LocacaoController>/5
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(int id)
         {
             try
             {
-                var cliente = _repositorio.ObterPorId(id);
+                var locacao = _repositorio.ObterPorId(id);
 
-                if (cliente == null)
+                if (locacao == null)
                 {
                     return StatusCode(
                       StatusCodes.Status404NotFound,
                       new
                       {
-                          mensagem = "Cliente não encontrado.",
+                          mensagem = "Locação não encontrada.",
                           status = StatusCodes.Status404NotFound
                       });
                 }
                 else
                 {
-                    var clienteViewModel = new EditarClienteViewModel(cliente);
+                    var locacaoViewModel = new EditarLocacaoViewModel(locacao);
 
                     return StatusCode(
                      StatusCodes.Status200OK,
                      new
                      {
-                         cliente = clienteViewModel,
-                         mensagem = "Cliente obtido com sucesso.",
+                         locacao = locacaoViewModel,
+                         mensagem = "Locação obtida com sucesso.",
                          status = StatusCodes.Status200OK
                      });
 
@@ -98,9 +96,9 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // POST api/<ClienteController>
+        // POST api/<LocacaoController>
         [HttpPost]
-        public IActionResult Post([FromBody] EditarClienteViewModel cliente)
+        public IActionResult Post([FromBody] EditarLocacaoViewModel locacao)
         {
             try
             {
@@ -115,30 +113,31 @@ namespace ProvaTecnicaEAuditoria.Controllers
                             });
                 }
 
-                var clienteModel = new Cliente(cliente);
+                var locacaoValida = _repositorio.LocacaoValida(locacao.ClienteId, locacao.FilmeId);
 
-                var cpfExistente = _repositorio.CpfExistente(cliente.Cpf);
-
-                if (cpfExistente)
+                if (!locacaoValida)
                 {
-                    return StatusCode(StatusCodes.Status409Conflict,
-                              new
-                              {
-                                  mensagem = "Erro, Cpf inserido existente.",
-                                  status = StatusCodes.Status409Conflict
-                              });
+                    return StatusCode(
+                       StatusCodes.Status404NotFound,
+                       new
+                       {
+                           mensagem = "Cliente e/ou Filme não encontrados.",
+                           status = StatusCodes.Status404NotFound
+                       });
                 }
                 else
                 {
-                    _repositorio.Inserir(clienteModel);
+                    var locacaoModel = new Locacao(locacao);
 
-                    var clienteViewModel = new ObterClienteViewModel(clienteModel);
+                    _repositorio.Inserir(locacaoModel);
+
+                    var locacaoViewModel = new ObterLocacaoViewModel(locacaoModel);
 
                     return StatusCode(StatusCodes.Status201Created,
                                new
                                {
-                                   cliente = clienteViewModel,
-                                   mensagem = "Cliente criado com sucesso.",
+                                   locacao = locacaoViewModel,
+                                   mensagem = "Locação criado com sucesso.",
                                    status = StatusCodes.Status201Created
                                });
                 }
@@ -154,9 +153,9 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // PUT api/<ClienteController>/5
+        // PUT api/<LocacaoController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] EditarClienteViewModel cliente)
+        public IActionResult Put(int id, [FromBody] EditarLocacaoViewModel locacao)
         {
             try
             {
@@ -171,27 +170,29 @@ namespace ProvaTecnicaEAuditoria.Controllers
                             });
                 }
 
-                var clienteModel = _repositorio.ObterPorId(id);
+                var locacaoModel = _repositorio.ObterPorId(id);
+                var locacaoValida = _repositorio.LocacaoValida(locacao.ClienteId, locacao.FilmeId);
 
-                if (clienteModel == null)
+                if (locacaoModel == null || !locacaoValida)
                 {
-                    return StatusCode(StatusCodes.Status404NotFound,
-                          new
-                          {
-                              mensagem = "Cliente não encontrado.",
-                              status = StatusCodes.Status404NotFound
-                          });
+                    return StatusCode(
+                     StatusCodes.Status404NotFound,
+                     new
+                     {
+                         mensagem = "Locação e/ou Filme não encontrados.",
+                         status = StatusCodes.Status404NotFound
+                     });
                 }
                 else
                 {
-                    clienteModel.Atualizar(cliente);
+                    locacaoModel.Atualizar(locacao);
 
-                    _repositorio.Atualizar(clienteModel);
+                    _repositorio.Atualizar(locacaoModel);
 
                     return StatusCode(StatusCodes.Status200OK,
                        new
                        {
-                           mensagem = "Cliente atualizado com sucesso.",
+                           mensagem = "Locação atualizada com sucesso.",
                            status = StatusCodes.Status200OK
                        });
                 }
@@ -207,32 +208,32 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // DELETE api/<ClienteController>/5
+        // DELETE api/<LocaçãoController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             try
             {
-                var cliente = _repositorio.ObterPorId(id);
+                var locacao = _repositorio.ObterPorId(id);
 
-                if (cliente == null)
+                if (locacao == null)
                 {
                     return StatusCode(
                       StatusCodes.Status404NotFound,
                       new
                       {
-                          mensagem = "Cliente não encontrado.",
+                          mensagem = "Locação não encontrada.",
                           status = StatusCodes.Status404NotFound
                       });
                 }
                 else
                 {
-                    _repositorio.Deletar(cliente);
+                    _repositorio.Deletar(locacao);
 
                     return StatusCode(StatusCodes.Status200OK,
                          new
                          {
-                             mensagem = "Cliente deletado com sucesso.",
+                             mensagem = "Locação deletada com sucesso.",
                              status = StatusCodes.Status200OK
                          });
                 }

@@ -47,11 +47,6 @@ namespace ProvaTecnicaEAuditoria.Repositories
         {
             return _auditoriaDataContext.Clientes.Any(x => x.Cpf.Equals(cpf));
         }      
-        
-        public bool ClienteExistente(int id)
-        {
-            return _auditoriaDataContext.Clientes.Any(x => x.Id.Equals(id));
-        }
 
         public void Dispose()
         {

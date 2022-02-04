@@ -2,9 +2,9 @@
 
 namespace ProvaTecnicaEAuditoria.ViewModels
 {
-    public class ListaDeClientesViewModel
+    public class ObterClienteViewModel
     {
-        public ListaDeClientesViewModel(Cliente cliente)
+        public ObterClienteViewModel(Cliente cliente)
         {
             Id = cliente.Id;
             Nome = cliente.Nome;
