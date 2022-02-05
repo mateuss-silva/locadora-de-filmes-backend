@@ -19,17 +19,42 @@ namespace ProvaTecnicaEAuditoria.Repositorios
 
             return _auditoriaDataContext.Clientes
                 .AsNoTracking()
-                .Where(x=> x.Cpf.Contains(busca) || x.Nome.ToLower().Contains(busca))
+                .Where(x => x.Cpf.Contains(busca) || x.Nome.ToLower().Contains(busca))
                 .Skip(pular)
                 .Take(pegar)
                 .ToList();
+        }
+
+        public IList<Cliente> ObterClientesQueMaisAlugaram(int pular, int pegar)
+        {
+            return _auditoriaDataContext.Clientes
+             .AsNoTracking()
+             .Include(e => e.Locacoes)
+             .OrderByDescending(e => e.Locacoes.Count)
+             .Skip(pular)
+             .Take(pegar)
+             .ToList();
+        }
+
+        public IList<Cliente> ObterClientesEmAtrasoDeDevolucao()
+        {
+            var clientes = _auditoriaDataContext.Clientes
+                            .AsNoTracking()
+                            .Include(e => e.Locacoes)
+                            .ThenInclude(e => e.Filme)
+                            .AsEnumerable();
+
+            var clientesComAtrasoDeFilme = clientes.Where(x => x.Locacoes.Any(e => e.DevolucaoAtrasada())).ToList();
+
+            return clientesComAtrasoDeFilme;
         }
 
         public Cliente ObterPorId(int id)
         {
             return _auditoriaDataContext.Clientes.Find(id);
         }
-        
+
+
         public void Inserir(Cliente cliente)
         {
             _auditoriaDataContext.Clientes.Add(cliente);
@@ -53,7 +78,7 @@ namespace ProvaTecnicaEAuditoria.Repositorios
         public bool CpfExistente(string cpf)
         {
             return _auditoriaDataContext.Clientes.Any(x => x.Cpf.Equals(cpf));
-        }      
+        }
 
         public void Dispose()
         {

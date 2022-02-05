@@ -6,7 +6,7 @@ namespace ProvaTecnicaEAuditoria.Modelos
     public class Locacao
     {
         public Locacao() { }
-        public Locacao(InserirLocacaoViewModel locacao) 
+        public Locacao(InserirLocacaoViewModel locacao)
         {
             ClienteId = locacao.ClienteId;
             FilmeId = locacao.FilmeId;
@@ -25,7 +25,36 @@ namespace ProvaTecnicaEAuditoria.Modelos
         {
             ClienteId = locacao.ClienteId;
             FilmeId = locacao.FilmeId;
-            DataDeDevolucao = locacao.DataDeDevolucao;
+
+            if (locacao.DataDeDevolucao is not null) DataDeDevolucao = locacao.DataDeDevolucao;
+        }
+
+        public bool DevolucaoAtrasada()
+        {
+            if (DataDeDevolucao is null)
+            {
+                var prazoDeEntrega = Filme.Lancamento ? 2 : 3;
+
+                var diasAlugados = (DateTime.Now - DataDeLocacao).TotalDays;
+
+                return diasAlugados > prazoDeEntrega;
+            }
+
+            return false;
+        }
+
+        public bool DevolucaoDepoisDoPrazo()
+        {
+            if (DataDeDevolucao is not null)
+            {
+                var prazoDeEntrega = Filme.Lancamento ? 2 : 3;
+
+                var diasAlugados = (DataDeDevolucao.Value - DataDeLocacao).TotalDays;
+
+                return diasAlugados > prazoDeEntrega;
+            }
+
+            return false;
         }
     }
 }

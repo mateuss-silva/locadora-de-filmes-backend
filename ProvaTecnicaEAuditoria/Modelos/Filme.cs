@@ -11,5 +11,6 @@ namespace ProvaTecnicaEAuditoria.Modelos
         public bool Lancamento { get; set; }
         public virtual List<Locacao> Locacoes { get; set; }
 
+        public bool NuncaAlugado() => Locacoes.Count == 0;
     }
 }

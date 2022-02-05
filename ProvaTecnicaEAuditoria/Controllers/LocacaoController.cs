@@ -71,7 +71,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
                 }
                 else
                 {
-                    var locacaoViewModel = new ObterLocacaoViewModel(locacao);
+                    var locacaoViewModel = new AtualizarLocacaoViewModel(locacao);
 
                     return StatusCode(
                      StatusCodes.Status200OK,
