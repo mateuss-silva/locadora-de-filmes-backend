@@ -19,13 +19,14 @@ namespace ProvaTecnicaEAuditoria.Controllers
         }
 
 
-        // GET: api/<LocacaoController>
+        // GET: api/Locacao
         [HttpGet]
         public IActionResult Get(string busca = "", int pular = 0, int pegar = 25)
         {
             try
             {
                 var locacoes = _repositorio.ObterIntervalo(busca, pular, pegar);
+                var quantidadeTotalDeLotacoes = _repositorio.ObterQuantidadeDeLocacoes(busca);
 
                 var locacoesViewModel = locacoes.Select(e => new ObterLocacaoViewModel(e)).ToList();
 
@@ -33,6 +34,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
                StatusCodes.Status200OK,
                new
                {
+                   locacoesTotal = quantidadeTotalDeLotacoes,
                    locacoes = locacoesViewModel,
                    mensagem = "Locações obtidas com sucesso.",
                    status = StatusCodes.Status200OK
@@ -51,7 +53,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // GET api/<LocacaoController>/5
+        // GET api/Locacao/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -96,7 +98,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // POST api/<LocacaoController>
+        // POST api/Locacao
         [HttpPost]
         public IActionResult Post([FromBody] InserirLocacaoViewModel locacao)
         {
@@ -151,7 +153,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // PUT api/<LocacaoController>/5
+        // PUT api/Locacao/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] AtualizarLocacaoViewModel locacao)
         {
@@ -206,7 +208,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // DELETE api/<LocaçãoController>/5
+        // DELETE api/Locacao/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

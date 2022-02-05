@@ -5,6 +5,7 @@ namespace ProvaTecnicaEAuditoria.Repositorios
 {
     public interface IClienteRepositorio: IDisposable
     {
+        int ObterQuantidadeDeClientes(string busca);
         IList<Cliente> ObterIntervalo(string busca, int pular, int pegar);
         IList<Cliente> ObterClientesEmAtrasoDeDevolucao();
         IList<Cliente> ObterClientesQueMaisAlugaram(int pular, int pegar);

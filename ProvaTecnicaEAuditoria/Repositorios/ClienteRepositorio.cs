@@ -13,16 +13,26 @@ namespace ProvaTecnicaEAuditoria.Repositorios
             _auditoriaDataContext = eAuditoriaDataContext;
         }
 
+        public int ObterQuantidadeDeClientes(string busca)
+        {
+            busca = busca.ToLower();
+
+            return _auditoriaDataContext.Clientes
+            .AsNoTracking()
+            .Where(x => x.Cpf.Contains(busca) || x.Nome.ToLower().Contains(busca))
+            .Count();
+        }
+
         public IList<Cliente> ObterIntervalo(string busca, int pular, int pegar)
         {
             busca = busca.ToLower();
 
             return _auditoriaDataContext.Clientes
-                .AsNoTracking()
-                .Where(x => x.Cpf.Contains(busca) || x.Nome.ToLower().Contains(busca))
-                .Skip(pular)
-                .Take(pegar)
-                .ToList();
+            .AsNoTracking()
+            .Where(x => x.Cpf.Contains(busca) || x.Nome.ToLower().Contains(busca))
+            .Skip(pular)
+            .Take(pegar)
+            .ToList();
         }
 
         public IList<Cliente> ObterClientesQueMaisAlugaram(int pular, int pegar)

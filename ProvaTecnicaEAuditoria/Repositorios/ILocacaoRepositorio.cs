@@ -5,6 +5,7 @@ namespace ProvaTecnicaEAuditoria.Repositorios
 {
     public interface ILocacaoRepositorio: IDisposable
     {
+        int ObterQuantidadeDeLocacoes(string busca);
         IList<Locacao> ObterIntervalo(string busca,int pular, int pegar);
         Locacao ObterPorId(int id);
         void Inserir(Locacao locacao);

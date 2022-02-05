@@ -14,24 +14,36 @@ namespace ProvaTecnicaEAuditoria.Repositorios
             _auditoriaDataContext = eAuditoriaDataContext;
         }
 
+        public int ObterQuantidadeDeLocacoes(string busca)
+        {
+            busca = busca.ToLower();
+
+            return _auditoriaDataContext.Locacoes
+            .AsNoTracking()
+            .Include(x => x.Filme)
+            .Include(x => x.Cliente)
+            .Where(x => x.Cliente.Cpf.Contains(busca) || x.Filme.Titulo.ToLower().Contains(busca))
+            .Count();
+        }
+
         public IList<Locacao> ObterIntervalo(string busca, int pular, int pegar)
         {
             busca = busca.ToLower();
 
             return _auditoriaDataContext.Locacoes
-                .AsNoTracking()
-                .Include(x => x.Filme)
-                .Include(x => x.Cliente)
-                .Where(x => x.Cliente.Cpf.Contains(busca) || x.Filme.Titulo.ToLower().Contains(busca))
-                .Skip(pular).Take(pegar).ToList();
+            .AsNoTracking()
+            .Include(x => x.Filme)
+            .Include(x => x.Cliente)
+            .Where(x => x.Cliente.Cpf.Contains(busca) || x.Filme.Titulo.ToLower().Contains(busca))
+            .Skip(pular).Take(pegar).ToList();
         }
 
         public Locacao ObterPorId(int id)
         {
             return _auditoriaDataContext.Locacoes
-                .Include(x => x.Filme)
-                .Include(x => x.Cliente)
-                .FirstOrDefault(x => x.Id.Equals(id));
+            .Include(x => x.Filme)
+            .Include(x => x.Cliente)
+            .FirstOrDefault(x => x.Id.Equals(id));
         }
 
         public void Inserir(Locacao locacao)

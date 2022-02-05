@@ -19,12 +19,14 @@ namespace ProvaTecnicaEAuditoria.Controllers
         }
 
 
+        // GET: api/Cliente
         [HttpGet]
         public IActionResult Get(string busca = "", int pular = 0, int pegar = 25)
         {
             try
             {
                 var clientes = _repositorio.ObterIntervalo(busca, pular, pegar);
+                var quantidadeTotalDeClientes = _repositorio.ObterQuantidadeDeClientes(busca);
 
                 var clientesViewModel = clientes.Select(e => new ObterClienteViewModel(e)).ToList();
 
@@ -32,6 +34,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
                StatusCodes.Status200OK,
                new
                {
+                   clientesTotal = quantidadeTotalDeClientes,
                    clientes = clientesViewModel,
                    mensagem = "Clientes obtidos com sucesso.",
                    status = StatusCodes.Status200OK
@@ -50,7 +53,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        /// GET api/<ClienteController>/5
+        /// GET api/Cliente/5
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -97,7 +100,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // POST api/<ClienteController>
+        // POST api/Cliente
         [HttpPost]
         public IActionResult Post([FromBody] AtualizarClienteViewModel cliente)
         {
@@ -151,7 +154,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // PUT api/<ClienteController>/5
+        // PUT api/Cliente/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] AtualizarClienteViewModel cliente)
         {
@@ -204,7 +207,7 @@ namespace ProvaTecnicaEAuditoria.Controllers
             }
         }
 
-        // DELETE api/<ClienteController>/5
+        // DELETE api/Cliente/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

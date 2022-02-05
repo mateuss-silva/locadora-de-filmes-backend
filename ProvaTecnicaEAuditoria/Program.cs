@@ -39,6 +39,7 @@ void ConfigureServices(WebApplicationBuilder builder)
 
     builder.Services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
     builder.Services.AddTransient<ILocacaoRepositorio, LocacaoRepositorio>();
+    builder.Services.AddTransient<IFilmeRepositorio, FilmeRepositorio>();
     builder.Services.AddDbContext<EAuditoriaContexto>(x => x.UseMySql(ServerVersion.AutoDetect(connectionString)));
 }
 
