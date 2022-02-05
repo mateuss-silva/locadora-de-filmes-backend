@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProvaTecnicaEAuditoria.Dados;
 using ProvaTecnicaEAuditoria.Repositorios;
+using ProvaTecnicaEAuditoria.Repositorios.Interfaces;
+using ProvaTecnicaEAuditoria.Servicos.Csv;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +42,7 @@ void ConfigureServices(WebApplicationBuilder builder)
     builder.Services.AddTransient<IClienteRepositorio, ClienteRepositorio>();
     builder.Services.AddTransient<ILocacaoRepositorio, LocacaoRepositorio>();
     builder.Services.AddTransient<IFilmeRepositorio, FilmeRepositorio>();
+    builder.Services.AddTransient<ICsvServico, CsvServico>();
     builder.Services.AddDbContext<EAuditoriaContexto>(x => x.UseMySql(ServerVersion.AutoDetect(connectionString)));
 }
 

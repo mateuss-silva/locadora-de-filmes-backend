@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProvaTecnicaEAuditoria.Dados;
 using ProvaTecnicaEAuditoria.Modelos;
+using ProvaTecnicaEAuditoria.Repositorios.Interfaces;
 
 namespace ProvaTecnicaEAuditoria.Repositorios
 {

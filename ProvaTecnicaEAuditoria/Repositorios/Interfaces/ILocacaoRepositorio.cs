@@ -1,7 +1,7 @@
 ﻿
 using ProvaTecnicaEAuditoria.Modelos;
 
-namespace ProvaTecnicaEAuditoria.Repositorios
+namespace ProvaTecnicaEAuditoria.Repositorios.Interfaces
 {
     public interface ILocacaoRepositorio: IDisposable
     {

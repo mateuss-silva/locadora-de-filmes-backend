@@ -1,6 +1,6 @@
 ﻿using ProvaTecnicaEAuditoria.Modelos;
 
-namespace ProvaTecnicaEAuditoria.Repositorios
+namespace ProvaTecnicaEAuditoria.Repositorios.Interfaces
 {
     public interface IFilmeRepositorio: IDisposable
     {
@@ -9,6 +9,7 @@ namespace ProvaTecnicaEAuditoria.Repositorios
         IList<Filme> ObterMaisAlugadosPorIntervalo(int pegar, DateTime dataInicial);
         IList<Filme> ObterMenosAlugadosPorIntervalo(int pegar, DateTime dataInicial);
         IList<Filme> ObterFilmesNuncaAlugados();
+       void InserirFilmes(IList<Filme> filmes);
 
     }
 }

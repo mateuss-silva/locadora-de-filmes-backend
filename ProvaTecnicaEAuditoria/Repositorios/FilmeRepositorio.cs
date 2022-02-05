@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProvaTecnicaEAuditoria.Dados;
 using ProvaTecnicaEAuditoria.Modelos;
+using ProvaTecnicaEAuditoria.Repositorios.Interfaces;
 
 namespace ProvaTecnicaEAuditoria.Repositorios
 {
@@ -12,6 +13,13 @@ namespace ProvaTecnicaEAuditoria.Repositorios
         public FilmeRepositorio(EAuditoriaContexto eAuditoriaDataContext)
         {
             _auditoriaDataContext = eAuditoriaDataContext;
+        }
+
+
+        public void InserirFilmes(IList<Filme> filmes)
+        {
+            _auditoriaDataContext.Filmes.AddRange(filmes);
+            _auditoriaDataContext.SaveChanges();
         }
 
         public int ObterQuantidadeDeFilmes(string busca)
