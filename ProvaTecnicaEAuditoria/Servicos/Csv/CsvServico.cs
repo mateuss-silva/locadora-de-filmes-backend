@@ -1,13 +1,13 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using ProvaTecnicaEAuditoria.Servicos.Csv.Mapeamentos;
+using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
 using System.Globalization;
 
 namespace ProvaTecnicaEAuditoria.Servicos.Csv
 {
     public class CsvServico: ICsvServico
     {
-        public IList<FilmeMapeamentoCsv> ConverterPlanilhaParaFilmes(Stream planilha, string delimitado = ";")
+        public IList<FilmeMapeamentoDePlanilha> ConverterPlanilhaParaFilmes(Stream planilha, string delimitado = ";")
         {
 
             using TextReader conteudoCsv = new StreamReader(planilha);
@@ -20,13 +20,13 @@ namespace ProvaTecnicaEAuditoria.Servicos.Csv
 
             using var leitorCsv = new CsvReader(conteudoCsv, configuracao);
 
-            var registros = leitorCsv.GetRecords<FilmeMapeamentoCsv>().ToList();
+            var registros = leitorCsv.GetRecords<FilmeMapeamentoDePlanilha>().ToList();
 
             return registros;
 
         }
 
-        public bool FilmesValidos(IList<FilmeMapeamentoCsv> registros)
+        public bool FilmesValidos(IList<FilmeMapeamentoDePlanilha> registros)
         {
             var contemIdNulo = registros.Any(x => x.Id is null);
 

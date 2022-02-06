@@ -5,6 +5,7 @@ using ProvaTecnicaEAuditoria.Dados;
 using ProvaTecnicaEAuditoria.Repositorios;
 using ProvaTecnicaEAuditoria.Repositorios.Interfaces;
 using ProvaTecnicaEAuditoria.Servicos.Csv;
+using ProvaTecnicaEAuditoria.Servicos.Excel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,7 @@ void ConfigureServices(WebApplicationBuilder builder)
     builder.Services.AddTransient<ILocacaoRepositorio, LocacaoRepositorio>();
     builder.Services.AddTransient<IFilmeRepositorio, FilmeRepositorio>();
     builder.Services.AddTransient<ICsvServico, CsvServico>();
+    builder.Services.AddTransient<IExcelServico, ExcelServico>();
     builder.Services.AddDbContext<EAuditoriaContexto>(x => x.UseMySql(ServerVersion.AutoDetect(connectionString)));
 }
 

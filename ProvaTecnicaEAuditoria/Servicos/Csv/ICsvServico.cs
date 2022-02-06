@@ -1,11 +1,11 @@
 ﻿
-using ProvaTecnicaEAuditoria.Servicos.Csv.Mapeamentos;
+using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
 
 namespace ProvaTecnicaEAuditoria.Servicos.Csv
 {
     public interface ICsvServico
     {
-        IList<FilmeMapeamentoCsv> ConverterPlanilhaParaFilmes(Stream planilha, string delimitado = ";");
-        bool FilmesValidos(IList<FilmeMapeamentoCsv> registros);
+        IList<FilmeMapeamentoDePlanilha> ConverterPlanilhaParaFilmes(Stream planilha, string delimitado = ";");
+        bool FilmesValidos(IList<FilmeMapeamentoDePlanilha> registros);
     }
 }

@@ -15,7 +15,6 @@ namespace ProvaTecnicaEAuditoria.Repositorios
             _auditoriaDataContext = eAuditoriaDataContext;
         }
 
-
         public void InserirFilmes(IList<Filme> filmes)
         {
             _auditoriaDataContext.Filmes.AddRange(filmes);

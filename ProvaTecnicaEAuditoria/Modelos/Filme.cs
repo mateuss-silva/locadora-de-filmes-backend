@@ -1,11 +1,11 @@
-﻿using ProvaTecnicaEAuditoria.Servicos.Csv.Mapeamentos;
+﻿using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
 
 namespace ProvaTecnicaEAuditoria.Modelos
 {
     public class Filme
     {
         public Filme() { }
-        public Filme(FilmeMapeamentoCsv filme) 
+        public Filme(FilmeMapeamentoDePlanilha filme) 
         { 
             Titulo = filme.Titulo;
             ClassificacaoIndicativa = filme.ClassificacaoIndicativa;
