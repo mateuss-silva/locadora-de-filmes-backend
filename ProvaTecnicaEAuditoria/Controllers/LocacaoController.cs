@@ -19,10 +19,12 @@ namespace ProvaTecnicaEAuditoria.Controllers
 
         // GET: api/Locacao
         [HttpGet]
-        public IActionResult Get(string busca = "", int pular = 0, int pegar = 25)
+        public IActionResult Get(string busca, int pular = 0, int pegar = 25)
         {
             try
             {
+                busca ??= string.Empty;
+
                 var locacoes = _repositorio.ObterIntervalo(busca, pular, pegar);
                 var quantidadeTotalDeLotacoes = _repositorio.ObterQuantidadeDeLocacoes(busca);
 

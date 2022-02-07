@@ -35,7 +35,7 @@ namespace ProvaTecnicaEAuditoria.Dados.Mapeamentos
             builder.Property(x => x.DataDeNascimento)
                  .IsRequired()
                  .HasColumnType("DATETIME")
-                 .HasColumnName("DataNascimento")                ;
+                 .HasColumnName("DataNascimento");
 
             // Índices
             builder

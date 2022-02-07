@@ -36,14 +36,14 @@ namespace ProvaTecnicaEAuditoria.Dados.Mapeamentos
                 .WithMany(x => x.Locacoes)
                 .HasForeignKey(x => x.FilmeId)
                 .HasConstraintName("FK_Filme_idx")
-                .OnDelete(DeleteBehavior.ClientNoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(x => x.Cliente)
                 .WithMany(x => x.Locacoes)
                 .HasForeignKey(x => x.ClienteId)
                 .HasConstraintName("FK_Cliente_idx")
-                .OnDelete(DeleteBehavior.ClientNoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }

@@ -34,10 +34,12 @@ namespace ProvaTecnicaEAuditoria.Controllers
 
         // GET: api/Filme
         [HttpGet]
-        public IActionResult Get(string busca = "", int pular = 0, int pegar = 25)
+        public IActionResult Get(string busca, int pular = 0, int pegar = 25)
         {
             try
             {
+                busca ??= string.Empty;
+
                 var filmes = _filmeRepositorio.ObterIntervalo(busca, pular, pegar);
                 var quantidadeTotalDeFilmes = _filmeRepositorio.ObterQuantidadeDeFilmes(busca);
                 var filmesViewModel = filmes.Select(e => new ObterFilmeViewModel(e)).ToList();
