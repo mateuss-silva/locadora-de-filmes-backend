@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["ProvaTecnicaEAuditoria/ProvaTecnicaEAuditoria.csproj", "ProvaTecnicaEAuditoria/"]
-RUN dotnet restore "ProvaTecnicaEAuditoria/ProvaTecnicaEAuditoria.csproj"
+COPY ["LocadoraDeFilmes/LocadoraDeFilmes.csproj", "LocadoraDeFilmes/"]
+RUN dotnet restore "LocadoraDeFilmes/LocadoraDeFilmes.csproj"
 COPY . .
-WORKDIR "/src/ProvaTecnicaEAuditoria"
-RUN dotnet build "ProvaTecnicaEAuditoria.csproj" -c Release -o /app/build
+WORKDIR "/src/LocadoraDeFilmes"
+RUN dotnet build "LocadoraDeFilmes.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ProvaTecnicaEAuditoria.csproj" -c Release -o /app/publish
+RUN dotnet publish "LocadoraDeFilmes.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ProvaTecnicaEAuditoria.dll"]
+ENTRYPOINT ["dotnet", "LocadoraDeFilmes.dll"]
