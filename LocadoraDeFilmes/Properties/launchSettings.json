@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "ProvaTecnicaEAuditoria": {
+    "LocadoraDeFilmes": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -31,8 +31,14 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "https://+:5050",
+        "ASPNETCORE_HTTPS_PORT": "5050"
+      },
       "publishAllPorts": true,
-      "useSSL": true
+      "useSSL": true,
+      "sslPort": 5050,
+      "httpPort": 5051
     }
   }
 }

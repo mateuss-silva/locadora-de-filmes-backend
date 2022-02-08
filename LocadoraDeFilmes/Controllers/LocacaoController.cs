@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProvaTecnicaEAuditoria.Modelos;
-using ProvaTecnicaEAuditoria.Repositorios.Interfaces;
-using ProvaTecnicaEAuditoria.ViewModels;
+using LocadoraDeFilmes.Modelos;
+using LocadoraDeFilmes.Repositorios.Interfaces;
+using LocadoraDeFilmes.ViewModels;
 
-namespace ProvaTecnicaEAuditoria.Controllers
+namespace LocadoraDeFilmes.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

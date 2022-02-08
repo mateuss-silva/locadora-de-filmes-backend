@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProvaTecnicaEAuditoria.Dados;
+using LocadoraDeFilmes.Dados;
 
 #nullable disable
 
-namespace ProvaTecnicaEAuditoria.Migrations
+namespace LocadoraDeFilmes.Migrations
 {
     [DbContext(typeof(EAuditoriaContexto))]
     partial class EAuditoriaDataContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace ProvaTecnicaEAuditoria.Migrations
                 .HasAnnotation("ProductVersion", "6.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("ProvaTecnicaEAuditoria.Modelos.Cliente", b =>
+            modelBuilder.Entity("LocadoraDeFilmes.Modelos.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace ProvaTecnicaEAuditoria.Migrations
                     b.ToTable("Cliente", (string)null);
                 });
 
-            modelBuilder.Entity("ProvaTecnicaEAuditoria.Modelos.Filme", b =>
+            modelBuilder.Entity("LocadoraDeFilmes.Modelos.Filme", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,7 +80,7 @@ namespace ProvaTecnicaEAuditoria.Migrations
                     b.ToTable("Filme", (string)null);
                 });
 
-            modelBuilder.Entity("ProvaTecnicaEAuditoria.Modelos.Locacao", b =>
+            modelBuilder.Entity("LocadoraDeFilmes.Modelos.Locacao", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -109,16 +109,16 @@ namespace ProvaTecnicaEAuditoria.Migrations
                     b.ToTable("Locacao", (string)null);
                 });
 
-            modelBuilder.Entity("ProvaTecnicaEAuditoria.Modelos.Locacao", b =>
+            modelBuilder.Entity("LocadoraDeFilmes.Modelos.Locacao", b =>
                 {
-                    b.HasOne("ProvaTecnicaEAuditoria.Modelos.Cliente", "Cliente")
+                    b.HasOne("LocadoraDeFilmes.Modelos.Cliente", "Cliente")
                         .WithMany("Locacoes")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_Cliente_idx");
 
-                    b.HasOne("ProvaTecnicaEAuditoria.Modelos.Filme", "Filme")
+                    b.HasOne("LocadoraDeFilmes.Modelos.Filme", "Filme")
                         .WithMany("Locacoes")
                         .HasForeignKey("FilmeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -130,12 +130,12 @@ namespace ProvaTecnicaEAuditoria.Migrations
                     b.Navigation("Filme");
                 });
 
-            modelBuilder.Entity("ProvaTecnicaEAuditoria.Modelos.Cliente", b =>
+            modelBuilder.Entity("LocadoraDeFilmes.Modelos.Cliente", b =>
                 {
                     b.Navigation("Locacoes");
                 });
 
-            modelBuilder.Entity("ProvaTecnicaEAuditoria.Modelos.Filme", b =>
+            modelBuilder.Entity("LocadoraDeFilmes.Modelos.Filme", b =>
                 {
                     b.Navigation("Locacoes");
                 });

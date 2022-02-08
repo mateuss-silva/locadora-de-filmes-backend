@@ -1,7 +1,7 @@
 ﻿
-using ProvaTecnicaEAuditoria.ViewModels;
+using LocadoraDeFilmes.ViewModels;
 
-namespace ProvaTecnicaEAuditoria.Modelos
+namespace LocadoraDeFilmes.Modelos
 {
     public class Cliente
     {

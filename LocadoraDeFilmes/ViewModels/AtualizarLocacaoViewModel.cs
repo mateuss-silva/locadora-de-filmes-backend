@@ -1,7 +1,7 @@
-﻿using ProvaTecnicaEAuditoria.Modelos;
+﻿using LocadoraDeFilmes.Modelos;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProvaTecnicaEAuditoria.ViewModels
+namespace LocadoraDeFilmes.ViewModels
 {
     public class AtualizarLocacaoViewModel
     {

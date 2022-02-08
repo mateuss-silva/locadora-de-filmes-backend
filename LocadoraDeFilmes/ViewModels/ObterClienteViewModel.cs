@@ -1,6 +1,6 @@
-﻿using ProvaTecnicaEAuditoria.Modelos;
+﻿using LocadoraDeFilmes.Modelos;
 
-namespace ProvaTecnicaEAuditoria.ViewModels
+namespace LocadoraDeFilmes.ViewModels
 {
     public class ObterClienteViewModel
     {

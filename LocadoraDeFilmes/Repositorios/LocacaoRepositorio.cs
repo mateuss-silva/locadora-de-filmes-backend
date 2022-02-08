@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProvaTecnicaEAuditoria.Dados;
-using ProvaTecnicaEAuditoria.Modelos;
-using ProvaTecnicaEAuditoria.Repositorios.Interfaces;
+using LocadoraDeFilmes.Dados;
+using LocadoraDeFilmes.Modelos;
+using LocadoraDeFilmes.Repositorios.Interfaces;
 
-namespace ProvaTecnicaEAuditoria.Repositorios
+namespace LocadoraDeFilmes.Repositorios
 {
     public class LocacaoRepositorio : ILocacaoRepositorio
     {

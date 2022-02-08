@@ -1,6 +1,6 @@
-﻿using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
+﻿using LocadoraDeFilmes.Servicos.Mapeamentos;
 
-namespace ProvaTecnicaEAuditoria.Servicos.Excel
+namespace LocadoraDeFilmes.Servicos.Excel
 {
     public interface IExcelServico
     {

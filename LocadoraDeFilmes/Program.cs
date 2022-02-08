@@ -1,11 +1,11 @@
 
+using LocadoraDeFilmes.Dados;
+using LocadoraDeFilmes.Repositorios;
+using LocadoraDeFilmes.Repositorios.Interfaces;
+using LocadoraDeFilmes.Servicos.Csv;
+using LocadoraDeFilmes.Servicos.Excel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProvaTecnicaEAuditoria.Dados;
-using ProvaTecnicaEAuditoria.Repositorios;
-using ProvaTecnicaEAuditoria.Repositorios.Interfaces;
-using ProvaTecnicaEAuditoria.Servicos.Csv;
-using ProvaTecnicaEAuditoria.Servicos.Excel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +41,17 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<EAuditoriaContexto>();
+    if (context.Database.GetPendingMigrations().Any())
+    {
+        context.Database.Migrate();
+    }
+}
 
 app.Run();
 

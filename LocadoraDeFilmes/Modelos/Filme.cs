@@ -1,6 +1,6 @@
-﻿using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
+﻿using LocadoraDeFilmes.Servicos.Mapeamentos;
 
-namespace ProvaTecnicaEAuditoria.Modelos
+namespace LocadoraDeFilmes.Modelos
 {
     public class Filme
     {

@@ -1,7 +1,7 @@
 ﻿
-using ProvaTecnicaEAuditoria.Modelos;
+using LocadoraDeFilmes.Modelos;
 
-namespace ProvaTecnicaEAuditoria.Repositorios.Interfaces
+namespace LocadoraDeFilmes.Repositorios.Interfaces
 {
     public interface ILocacaoRepositorio: IDisposable
     {

@@ -1,4 +1,4 @@
-﻿namespace ProvaTecnicaEAuditoria.Uteis
+﻿namespace LocadoraDeFilmes.Uteis
 {
     public class ArquivoUtil
     {

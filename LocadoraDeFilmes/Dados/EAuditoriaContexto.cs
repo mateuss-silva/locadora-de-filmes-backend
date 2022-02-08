@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProvaTecnicaEAuditoria.Dados.Mapeamentos;
-using ProvaTecnicaEAuditoria.Modelos;
+using LocadoraDeFilmes.Dados.Mapeamentos;
+using LocadoraDeFilmes.Modelos;
 
-namespace ProvaTecnicaEAuditoria.Dados
+namespace LocadoraDeFilmes.Dados
 {
     public class EAuditoriaContexto : DbContext
     {

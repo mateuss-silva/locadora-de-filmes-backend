@@ -1,7 +1,7 @@
 ﻿using OfficeOpenXml;
-using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
+using LocadoraDeFilmes.Servicos.Mapeamentos;
 
-namespace ProvaTecnicaEAuditoria.Servicos.Excel
+namespace LocadoraDeFilmes.Servicos.Excel
 {
     public class ExcelServico : IExcelServico
     {

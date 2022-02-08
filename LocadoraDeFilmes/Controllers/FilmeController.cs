@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProvaTecnicaEAuditoria.Modelos;
-using ProvaTecnicaEAuditoria.Repositorios.Interfaces;
-using ProvaTecnicaEAuditoria.Servicos.Csv;
-using ProvaTecnicaEAuditoria.Servicos.Excel;
-using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
-using ProvaTecnicaEAuditoria.Uteis;
-using ProvaTecnicaEAuditoria.ViewModels;
+using LocadoraDeFilmes.Modelos;
+using LocadoraDeFilmes.Repositorios.Interfaces;
+using LocadoraDeFilmes.Servicos.Csv;
+using LocadoraDeFilmes.Servicos.Excel;
+using LocadoraDeFilmes.Servicos.Mapeamentos;
+using LocadoraDeFilmes.Uteis;
+using LocadoraDeFilmes.ViewModels;
 
-namespace ProvaTecnicaEAuditoria.Controllers
+namespace LocadoraDeFilmes.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

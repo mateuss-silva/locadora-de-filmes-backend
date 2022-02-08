@@ -1,7 +1,7 @@
 ﻿
-using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
+using LocadoraDeFilmes.Servicos.Mapeamentos;
 
-namespace ProvaTecnicaEAuditoria.Servicos.Csv
+namespace LocadoraDeFilmes.Servicos.Csv
 {
     public interface ICsvServico
     {

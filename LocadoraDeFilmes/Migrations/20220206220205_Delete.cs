@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
-namespace ProvaTecnicaEAuditoria.Migrations
+namespace LocadoraDeFilmes.Migrations
 {
     public partial class Delete : Migration
     {

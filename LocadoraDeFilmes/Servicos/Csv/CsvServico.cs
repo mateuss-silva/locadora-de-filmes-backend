@@ -1,9 +1,9 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using ProvaTecnicaEAuditoria.Servicos.Mapeamentos;
+using LocadoraDeFilmes.Servicos.Mapeamentos;
 using System.Globalization;
 
-namespace ProvaTecnicaEAuditoria.Servicos.Csv
+namespace LocadoraDeFilmes.Servicos.Csv
 {
     public class CsvServico: ICsvServico
     {
