@@ -69,7 +69,7 @@ namespace LocadoraDeFilmes.Controllers
 
         // GET: api/Filme/relatorio
         [HttpGet("relatorio")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
@@ -86,7 +86,7 @@ namespace LocadoraDeFilmes.Controllers
                 var clientesEmAtraso = _clienteRepositorio.ObterClientesEmAtrasoDeDevolucao().Select(e => new ClienteMapeamentoDePlanilha(e));
                 var segundoClienteQueMaisAlugou = _clienteRepositorio.ObterClientesQueMaisAlugaram(1, 1).Select(e => new ClienteMapeamentoDePlanilha(e));
 
-                var caminhoDoRelatorio = _excelServico.GerarRelatorio(clientesEmAtraso, filmesNuncaAlugados, filmesMaisAlugados, filmesMenosAlugados, segundoClienteQueMaisAlugou).Result;
+                var caminhoDoRelatorio = await _excelServico.GerarRelatorio(clientesEmAtraso, filmesNuncaAlugados, filmesMaisAlugados, filmesMenosAlugados, segundoClienteQueMaisAlugou);
 
                 byte[] relatorioEmBytes = ArquivoUtil.ArquivoParaBytes(caminhoDoRelatorio);
 
@@ -104,7 +104,7 @@ namespace LocadoraDeFilmes.Controllers
                     });
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                    new
